@@ -47,7 +47,7 @@ const App = () => {
             <div>
                 <nav className="navbar navbar-expand navbar-light bg-light">
                     <Link to={"/"} className="navbar-brand">
-                        Home
+                        Início
                     </Link>
                     <div className="navbar-nav mr-auto">
                         <li className="nav-item">
@@ -74,13 +74,13 @@ const App = () => {
                         <div className="navbar-nav ml-auto">
                             <li className="nav-item">
                                 <Link to={"/login"} className="nav-link">
-                                    Login
+                                    Entrar
                                 </Link>
                             </li>
 
                             <li className="nav-item">
                                 <Link to={"/register"} className="nav-link">
-                                    Sign Up
+                                    Criar Conta
                                 </Link>
                             </li>
                         </div>

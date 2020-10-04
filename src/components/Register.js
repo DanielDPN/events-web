@@ -12,7 +12,7 @@ const required = (value) => {
   if (!value) {
     return (
       <div className="alert alert-danger" role="alert">
-        This field is required!
+        Campo obrigatório!
       </div>
     );
   }
@@ -106,7 +106,7 @@ const Register = () => {
           {!successful && (
             <div>
               <div className="form-group">
-                <label htmlFor="username">Username</label>
+                <label htmlFor="username">Usuário</label>
                 <Input
                   type="text"
                   className="form-control"
@@ -118,7 +118,7 @@ const Register = () => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">E-mail</label>
                 <Input
                   type="text"
                   className="form-control"
@@ -130,7 +130,7 @@ const Register = () => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password">Senha</label>
                 <Input
                   type="password"
                   className="form-control"
@@ -142,7 +142,7 @@ const Register = () => {
               </div>
 
               <div className="form-group">
-                <button className="btn btn-primary btn-block">Sign Up</button>
+                <button className="btn btn-primary btn-block">Criar Conta</button>
               </div>
             </div>
           )}
