@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import EventDataService from "../services/event.service";
+import moment from "moment";
 
 const Event = props => {
     const initialEventState = {
@@ -13,6 +14,7 @@ const Event = props => {
     const getEvent = id => {
         EventDataService.get(id)
             .then(response => {
+                response.data.date = moment(response.data.date).utc().format('yyyy-MM-DD');
                 setCurrentEvent(response.data);
                 console.log(response.data);
             })

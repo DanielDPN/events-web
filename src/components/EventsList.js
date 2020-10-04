@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import EventDataService from "../services/event.service";
 import {Link} from "react-router-dom";
+import moment from "moment";
 
 const EventsList = () => {
     const [events, setEvents] = useState([]);
@@ -122,11 +123,11 @@ const EventsList = () => {
                             <label>
                                 <strong>Data:</strong>
                             </label>{" "}
-                            {currentEvent.date}
+                            {moment(currentEvent.date).utc().format('DD/MM/yyyy')}
                         </div>
                         <div>
                             <label>
-                                <strong>Criador:</strong>
+                                <strong>Usuário:</strong>
                             </label>{" "}
                             {currentEvent.user.username}
                         </div>
