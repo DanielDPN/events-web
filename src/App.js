@@ -3,6 +3,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {Router, Switch, Route, Link} from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import "font-awesome/css/font-awesome.min.css";
+
 import "./App.css";
 
 import Login from "./components/Login";
@@ -45,22 +47,12 @@ const App = () => {
             <div>
                 <nav className="navbar navbar-expand navbar-light bg-light">
                     <Link to={"/"} className="navbar-brand">
-                        Events
+                        Home
                     </Link>
                     <div className="navbar-nav mr-auto">
                         <li className="nav-item">
-                            <Link to={"/home"} className="nav-link">
-                                Home
-                            </Link>
-                        </li>
-                        <li className="nav-item">
                             <Link to={"/events"} className="nav-link">
                                 Eventos
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to={"/add"} className="nav-link">
-                                Adicionar
                             </Link>
                         </li>
                     </div>
@@ -74,7 +66,7 @@ const App = () => {
                             </li>
                             <li className="nav-item">
                                 <a href="/login" className="nav-link" onClick={logOut}>
-                                    LogOut
+                                    Sair
                                 </a>
                             </li>
                         </div>

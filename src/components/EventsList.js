@@ -63,88 +63,121 @@ const EventsList = () => {
     };
 
     return (
-        <div className="list row">
-            <div className="col-md-8">
-                <div className="input-group mb-3">
-                    <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Buscar pelo nome"
-                        value={searchName}
-                        onChange={onChangeSearchName}
-                    />
-                    <div className="input-group-append">
-                        <button
-                            className="btn btn-outline-secondary"
-                            type="button"
-                            onClick={findByName}
-                        >
-                            Buscar
-                        </button>
+        <div className="container">
+            <div className="container bootstrap snippet">
+                <div className="row">
+                    <div className="col-sm-12">
+                        <div className="circle-tile ">
+                            <a href="/events">
+                                <div className="circle-tile-heading dark-blue">
+                                    <i className="fa fa-calendar fa-fw fa-3x"/></div>
+                            </a>
+                            <div className="circle-tile-content dark-blue">
+                                <div className="circle-tile-description text-faded"> Eventos</div>
+
+
+                                <div className="list row">
+                                    <div className="col-md-8">
+                                        <div className="input-group mb-3">
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                placeholder="Buscar pelo nome"
+                                                value={searchName}
+                                                onChange={onChangeSearchName}
+                                            />
+                                            <div className="input-group-append">
+                                                <button
+                                                    className="btn btn-outline-secondary"
+                                                    type="button"
+                                                    onClick={findByName}
+                                                >
+                                                    Buscar
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-3">
+                                        <div className="input-group mb-3">
+                                            <div className="input-group-append">
+                                                <button
+                                                    className="btn btn-danger"
+                                                    onClick={removeAllEvents}
+                                                >
+                                                    Apagar Todos
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-1">
+                                        <div className="input-group mb-3">
+                                            <div className="input-group-append">
+                                                <a href="/add"
+                                                    className="btn btn-success"
+                                                >
+                                                    <i className="fa fa-plus"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <ul className="list-group">
+                                            {events &&
+                                            events.map((event, index) => (
+                                                <li
+                                                    className={
+                                                        "list-group-item " + (index === currentIndex ? "active" : "")
+                                                    }
+                                                    onClick={() => setActiveEvent(event, index)}
+                                                    key={index}
+                                                >
+                                                    {event.name}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                    <div className="col-md-6 back-white">
+                                        {currentEvent ? (
+                                            <div>
+                                                <h4>Evento</h4>
+                                                <div>
+                                                    <label>
+                                                        <strong>Nome:</strong>
+                                                    </label>{" "}
+                                                    {currentEvent.name}
+                                                </div>
+                                                <div>
+                                                    <label>
+                                                        <strong>Data:</strong>
+                                                    </label>{" "}
+                                                    {moment(currentEvent.date).utc().format('DD/MM/yyyy')}
+                                                </div>
+                                                <div>
+                                                    <label>
+                                                        <strong>Usuário:</strong>
+                                                    </label>{" "}
+                                                    {currentEvent.user.username}
+                                                </div>
+
+                                                <Link
+                                                    to={"/events/" + currentEvent.id}
+                                                    className="btn btn-warning"
+                                                >
+                                                    Editar
+                                                </Link>
+                                            </div>
+                                        ) : (
+                                            <div>
+                                                <br/>
+                                                <p>Clique em um Evento...</p>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="col-md-6">
-                <h4>Lista de Eventos</h4>
-
-                <ul className="list-group">
-                    {events &&
-                    events.map((event, index) => (
-                        <li
-                            className={
-                                "list-group-item " + (index === currentIndex ? "active" : "")
-                            }
-                            onClick={() => setActiveEvent(event, index)}
-                            key={index}
-                        >
-                            {event.name}
-                        </li>
-                    ))}
-                </ul>
-
-                <button
-                    className="m-3 btn btn-sm btn-danger"
-                    onClick={removeAllEvents}
-                >
-                    Apagar Todos
-                </button>
-            </div>
-            <div className="col-md-6">
-                {currentEvent ? (
-                    <div>
-                        <h4>Evento</h4>
-                        <div>
-                            <label>
-                                <strong>Nome:</strong>
-                            </label>{" "}
-                            {currentEvent.name}
-                        </div>
-                        <div>
-                            <label>
-                                <strong>Data:</strong>
-                            </label>{" "}
-                            {moment(currentEvent.date).utc().format('DD/MM/yyyy')}
-                        </div>
-                        <div>
-                            <label>
-                                <strong>Usuário:</strong>
-                            </label>{" "}
-                            {currentEvent.user.username}
-                        </div>
-
-                        <Link
-                            to={"/events/" + currentEvent.id}
-                            className="badge badge-warning"
-                        >
-                            Editar
-                        </Link>
-                    </div>
-                ) : (
-                    <div>
-                        <br/>
-                        <p>Clique em um Evento...</p>
-                    </div>
-                )}
             </div>
         </div>
     );

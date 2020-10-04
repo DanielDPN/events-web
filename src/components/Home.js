@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from "react";
 
-import UserService from "../services/event.service";
+import EventService from "../services/event.service";
 
 const Home = () => {
     const [content, setContent] = useState("");
 
     useEffect(() => {
-        UserService.getAll().then(
+        EventService.getAll().then(
             (response) => {
                 setContent(response.data);
             },
@@ -23,9 +23,26 @@ const Home = () => {
 
     return (
         <div className="container">
-            <header className="jumbotron">
-                <h3>Sistema de Eventos</h3>
-            </header>
+            <div className="container bootstrap snippet">
+                <div className="row">
+                    <div className="col-sm-12">
+                        <div className="circle-tile ">
+                            <a href="/events">
+                                <div className="circle-tile-heading dark-blue">
+                                    <i className="fa fa-calendar fa-fw fa-3x"/></div>
+                            </a>
+                            <div className="circle-tile-content dark-blue">
+                                <div className="circle-tile-description text-faded"> Eventos</div>
+                                <div className="circle-tile-number text-faded ">{content.length}</div>
+                                <a className="circle-tile-footer" href="/events">Visualizar<i
+                                    className="fa fa-chevron-circle-right"/></a>
+                                <a className="circle-tile-footer" href="/add">Adicionar<i
+                                    className="fa fa-chevron-circle-right"/></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
